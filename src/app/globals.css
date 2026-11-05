@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --accent: 59 130 246; /* blue-500 */
+  --bg: 255 255 255;
+  --fg: 17 24 39;       /* gray-900 */
+  --muted: 107 114 128; /* gray-500 */
+  --border: 229 231 235;/* gray-200 */
+  --surface: 249 250 251;/* gray-50 */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: 17 24 39;
+    --fg: 243 244 246;
+    --muted: 156 163 175;
+    --border: 55 65 81;
+    --surface: 31 41 55;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: rgb(var(--bg));
+  color: rgb(var(--fg));
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Utility classes using CSS vars */
+.bg-surface { background-color: rgb(var(--surface)); }
+.text-muted { color: rgb(var(--muted)); }
+.border-default { border-color: rgb(var(--border)); }
+
+/* React-easy-crop overrides */
+.reactEasyCrop_Container {
+  border-radius: 0.5rem;
+}
+
+/* Upload area pulse animation */
+@keyframes pulse-border {
+  0%, 100% { border-color: rgb(var(--accent) / 0.3); }
+  50% { border-color: rgb(var(--accent) / 0.8); }
+}
+.upload-pulse {
+  animation: pulse-border 2s ease-in-out infinite;
+}
+
+/* Hide scrollbar for preset list */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Smooth transitions */
+* {
+  transition-property: color, background-color, border-color;
+  transition-duration: 150ms;
+  transition-timing-function: ease;
+}
+
+/* Focus ring */
+*:focus-visible {
+  outline: 2px solid rgb(var(--accent));
+  outline-offset: 2px;
+}
+
+/* Ad slot placeholder */
+.ad-slot {
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed rgb(var(--border));
+  border-radius: 0.5rem;
+  color: rgb(var(--muted));
+  font-size: 0.75rem;
+}
+
